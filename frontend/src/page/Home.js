@@ -1,11 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useSelector } from "react-redux";
 import CardFeature from "../component/CardFeature";
 import HomeCard from "../component/HomeCard";
 import { GrPrevious, GrNext } from "react-icons/gr";
-import FilterProduct from "../component/FilterProduct";
+// import FilterProduct from "../component/FilterProduct";
 import AllProduct from "../component/AllProduct";
-
 
 const Home = () => {
   const productData = useSelector((state) => state.product.productList);
@@ -25,14 +24,6 @@ const Home = () => {
     slideProductRef.current.scrollLeft -= 200;
   };
 
-
- 
-
-
-  
-
-
-
   return (
     <div className="p-2 md:p-4">
       <div className="md:flex gap-4 py-2">
@@ -40,6 +31,7 @@ const Home = () => {
           <div className="flex gap-3 bg-slate-300 w-36 px-2 items-center rounded-full">
             <p className="text-sm font-medium text-slate-900">Bike Delivery</p>
             <img
+              alt=""
               src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png"
               className="h-7"
             />
@@ -75,7 +67,9 @@ const Home = () => {
                 );
               })
             : loadingArray.map((el, index) => {
-                return <HomeCard key={index+"loading"} loading={"Loading..."} />;
+                return (
+                  <HomeCard key={index + "loading"} loading={"Loading..."} />
+                );
               })}
         </div>
       </div>
@@ -108,7 +102,7 @@ const Home = () => {
             ? homeProductCartListVegetables.map((el) => {
                 return (
                   <CardFeature
-                    key={el._id+"vegetable"}
+                    key={el._id + "vegetable"}
                     id={el._id}
                     name={el.name}
                     category={el.category}
@@ -117,13 +111,13 @@ const Home = () => {
                   />
                 );
               })
-            : loadingArrayFeature.map((el,index) => (
-                <CardFeature loading="Loading..." key={index+"cartLoading"} />
+            : loadingArrayFeature.map((el, index) => (
+                <CardFeature loading="Loading..." key={index + "cartLoading"} />
               ))}
         </div>
       </div>
-      
-      <AllProduct heading={"Your Product"}/>
+
+      <AllProduct heading={"Your Product"} />
     </div>
   );
 };

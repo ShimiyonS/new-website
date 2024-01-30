@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assest/logo.png";
+// import logo from "../assest/logo.png";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { BsCartFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,7 +28,7 @@ const Header = () => {
       <div className="flex items-center h-full justify-between">
         <Link to={""}>
           <div className="h-10">
-            <img src={logo} className="h-full" />
+            <img alt="" className="h-full" />
           </div>
         </Link>
 
@@ -50,14 +50,14 @@ const Header = () => {
           <div className=" text-slate-600" onClick={handleShowMenu}>
             <div className="text-3xl cursor-pointer w-8 h-8 rounded-full overflow-hidden drop-shadow-md">
               {userData.image ? (
-                <img src={userData.image} className="h-full w-full" />
+                <img alt="" src={userData.image} className="h-full w-full" />
               ) : (
                 <HiOutlineUserCircle />
               )}
             </div>
             {showMenu && (
               <div className="absolute right-2 bg-white py-2  shadow drop-shadow-md flex flex-col min-w-[120px] text-center">
-                {userData.email === process.env.REACT_APP_ADMIN_EMAIL && (
+                {userData.email === "shimiyon21@gmail.com" && (
                   <Link
                     to={"newproduct"}
                     className="whitespace-nowrap cursor-pointer px-2"
