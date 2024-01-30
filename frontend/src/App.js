@@ -5,17 +5,19 @@ import { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
 import { setDataProduct } from "./redux/productSlide";
 import { useDispatch } from "react-redux";
+import {data} from "./data"
 
 function App() {
   const dispatch = useDispatch();
+  console.log(data)
   // const productData = useSelector((state) => state.product);
 
   useEffect(() => {
     (async () => {
-      const res = await fetch(`${"https://backend-mern-kowt.onrender.com"}/product`);
+      const res = await fetch(`${"http://localhost:8000"}/product`);
       const resData = await res.json();
       console.log(resData);
-      dispatch(setDataProduct(resData));
+      dispatch(setDataProduct(data));
     })();
   });
 
